@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH=/home/perminovs/.local/bin:$PATH
+
 function git-current-branch {
     git branch --no-color 2> /dev/null | grep \* | colrm 1 2
 }
@@ -138,28 +140,8 @@ function set_prompt_line {
 
 set_prompt_line
 
-alias mystop="sudo /etc/init.d/mysql stop"
-alias mystart="sudo /etc/init.d/mysql start"
+alias mcedit="mcedit -C \"editnormal=lightgray,black:editbold=yellow,black:editmarked=black,cyan\""
 
-alias postop="sudo /etc/init.d/postgresql stop"
-alias postart="sudo /etc/init.d/postgresql start"
-
-alias repatch="sudo /etc/init.d/apache2 restart"
-
-alias aud="lspci -k | grep -A2 -i audio"
-
-alias cvenv3="virtualenv venv --python=/usr/bin/python3 && source venv/bin/activate"
-alias cvenv2="virtualenv venv --python=/usr/bin/python2 && source venv/bin/activate"
-alias cvenv=cvenv3
-
-alias makem="python manage.py makemigrations"
-alias migr="python manage.py migrate"
-
-alias giforce="git add . && git commit --amend --no-edit && git push -f"
-
+alias cvenv="virtualenv .venv --python=/usr/bin/python3 && source .venv/bin/activate"
 alias python=python3
-
-alias dup="docker-compose up"
-alias dupb="docker-compose up --build"
-alias dcb='docker-compose build'
-alias drn='docker-compose run'
+alias dc="docker-compose"
